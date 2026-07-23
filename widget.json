@@ -1,0 +1,6 @@
+{
+    "name": "Storage Usage",
+    "description": "Shows disk used, available, and total space with a fill bar that colors by how full the disk is.",
+    "author": "Dion Munk",
+    "email": "dion@dionmunk.com"
+}
