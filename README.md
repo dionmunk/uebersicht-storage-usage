@@ -6,7 +6,7 @@ A storage usage widget for [Übersicht](http://tracesof.net/uebersicht/). It sho
 
 ## Screenshot
 
-![Screenshot](screenshots/screenshot.png)
+![Screenshot](screenshot.png)
 
 ## Options
 
