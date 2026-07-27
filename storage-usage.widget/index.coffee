@@ -1,5 +1,8 @@
 command: "BLOCKSIZE=1000000 df -l"
 
+# Enable or disable this widget.
+widgetEnabled: true   # true | false
+
 refreshFrequency: '1s'
 
 # Toggle the graph panel on/off without removing the widget
@@ -210,6 +213,11 @@ render: -> """
 """
 
 update: (output, domEl) ->
+  # Hide entirely when disabled.
+  if not @widgetEnabled
+    $(domEl).css('display', 'none')
+    return
+  $(domEl).css('display', '')
   usageFormat = (mb) ->
     if mb > 1000000
       tb = mb / 1000000
