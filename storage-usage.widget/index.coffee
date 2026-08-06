@@ -1,4 +1,7 @@
-command: "BLOCKSIZE=1000000 df -l"
+# /bin/df, not `df`: update() reads the BSD column layout (mount point at index 8,
+# Capacity at 4). With Homebrew coreutils on PATH a bare `df` resolves to GNU df,
+# which prints six columns and no iused/ifree, so the parse yields blanks.
+command: "BLOCKSIZE=1000000 /bin/df -l"
 
 # Enable or disable this widget.
 widgetEnabled: true   # true | false
@@ -32,7 +35,7 @@ style: """
     backdrop-filter: blur(var(--panel-blur, 48px))
     border-radius 10px
     box-sizing: border-box
-    min-height: 80px       // base minimum widget height (see LAYOUT.md)
+    min-height: var(--grid-unit, 80px)       // base minimum widget height (see LAYOUT.md)
 
   .panel-stats
     padding 9px 10px 12px
@@ -42,7 +45,7 @@ style: """
     padding 10px
 
   .stats-inner
-    width: 300px
+    width: calc(var(--grid-col, 320px) - 20px)
     text-align: left
     position: relative
     display: flex
@@ -123,7 +126,7 @@ style: """
     background: var(--status-critical, var(--level-max, rgba(#fff, 1)))
 
   .graph-container
-    width: 300px
+    width: calc(var(--grid-col, 320px) - 20px)
     height: 53px
     position: relative
     overflow: hidden
